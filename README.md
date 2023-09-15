@@ -1,4 +1,5 @@
-### **3 Project Features**
+# **3 Project Features**
+
 
  **1. Course Selection and Limit Handling:**
    - Users can browse and select courses from a list displayed on the page.
