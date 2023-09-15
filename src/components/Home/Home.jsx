@@ -48,7 +48,7 @@ const Home = () => {
 
     return (
         <div className="max-w-screen-xl mx-auto">
-            <header className="py-8">
+            <header className="pt-8 pb-4">
                 <h1 className='text-4xl font-bold text-center'>Course Registration</h1>
 
             </header>
