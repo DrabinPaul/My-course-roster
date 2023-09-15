@@ -1,4 +1,7 @@
-# **3 Project Features**
+# **My-Course-Roster-DrabinPaul**
+
+
+## **3 Features about this project**
 
 
  **1. Course Selection and Limit Handling:**
@@ -17,7 +20,7 @@
 **These features make it easy to pick courses and stay within the credit limit. You'll receive instant toast notifications for key events like exceeding the credit limit or confirming course selections.**
 
 
-# **Managed state in this project**
+## **Managed state in this project**
 
 
 **1. `allCourse` State:**
