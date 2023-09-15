@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { BiBookOpen } from 'react-icons/bi';
 import Cart from '../Cart/Cart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Home = () => {
@@ -20,7 +22,7 @@ const Home = () => {
         const isExist = selectedCourse.find((item) => item.id == course.id);
         let credit = course.credit;
         if (isExist) {
-            return alert('already exist');
+            return toast('already exist');
         }
         else {
 
@@ -28,13 +30,13 @@ const Home = () => {
                 credit = credit + item.credit;
             });
             if (credit > 20) {
-               return alert('Credit limit exceeded! Maximum credit limit is 20.');
+               return toast('Credit limit exceeded! Maximum credit limit is 20.');
             }
 
             setTotalCredit(credit);
             const creditRemaining = 20 - credit;
             if (creditRemaining < 0) {
-                return alert('Credit limit exceeded! Maximum credit limit is 20.');
+                return toast('Credit limit exceeded! Maximum credit limit is 20.');
              }
 
             setRemainingCredit(creditRemaining);
@@ -87,6 +89,7 @@ const Home = () => {
                 </div>
 
             </div>
+            <ToastContainer></ToastContainer>
         </div>
 
 
