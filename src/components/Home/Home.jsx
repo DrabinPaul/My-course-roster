@@ -7,6 +7,8 @@ import Cart from '../Cart/Cart';
 const Home = () => {
     const [allCourse, setAllCourse] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState([]);
+    const [remainingCredit, setRemainingCredit] = useState(20);
+    const [totalCredit, setTotalCredit] = useState(0);
 
     useEffect(() => {
         fetch("./blogs.json")
@@ -16,10 +18,26 @@ const Home = () => {
 
     const handleSelectCouse = (course) => {
         const isExist = selectedCourse.find((item) => item.id == course.id);
+        let credit = course.credit;
         if (isExist) {
             return alert('already exist');
         }
         else {
+
+            selectedCourse.forEach((item) => {
+                credit = credit + item.credit;
+            });
+            if (credit > 20) {
+               return alert('Credit limit exceeded! Maximum credit limit is 20.');
+            }
+
+            setTotalCredit(credit);
+            const creditRemaining = 20 - credit;
+            if (creditRemaining < 0) {
+                return alert('Credit limit exceeded! Maximum credit limit is 20.');
+             }
+
+            setRemainingCredit(creditRemaining);
 
             setSelectedCourse([...selectedCourse, course]);
         }
@@ -63,8 +81,9 @@ const Home = () => {
                 </div>
 
                 <div className="w-[310px] h-[355px] bg-white px-4 pt-3 rounded">
-                    <h2 className='text-xl font-bold border-b-2 py-3'>Course Name</h2>
-                    <Cart selectedCourse={selectedCourse}></Cart>
+                    <Cart
+                        selectedCourse={selectedCourse} remainingCredit={remainingCredit} totalCredit={totalCredit}
+                    ></Cart>
                 </div>
 
             </div>
